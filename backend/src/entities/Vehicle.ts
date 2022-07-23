@@ -25,7 +25,7 @@ export class Vehicle {
   version: string;
 
   @Column()
-  year: string;
+  year: number;
 
   @CreateDateColumn({ name: "created_at" })
   createdAt: Date;
