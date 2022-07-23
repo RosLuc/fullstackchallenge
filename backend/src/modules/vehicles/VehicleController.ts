@@ -3,13 +3,13 @@ import { IVehicle } from "../../interfaces/vehicle";
 import { IVehicleService } from "../../interfaces/VehicleService";
 
 export class VehicleController {
-  constructor(private VehicleService: IVehicleService) {}
+  constructor(private vehicleService: IVehicleService) {}
 
   async create(request: Request, response: Response) {
     const { licensePlate, brand, model, version, year } = request.body;
-
+    
     try {
-      const result = await this.VehicleService.create({
+      const result = await this.vehicleService.create({
         licensePlate,
         brand,
         model,
@@ -19,7 +19,11 @@ export class VehicleController {
 
       return response.status(201).json(result);
     } catch (e) {
-      return response.status(400).json(e.message);
+      if (e instanceof Error) {
+        return response.status(400).json(e.message);
+      } else {
+        return response.status(500).json(e);
+      }
     }
   }
 
@@ -28,7 +32,7 @@ export class VehicleController {
     const { vehicleId } = request.params;
 
     try {
-      const result = await this.VehicleService.update(vehicleId, {
+      const result = await this.vehicleService.update(vehicleId, {
         licensePlate,
         brand,
         model,
@@ -38,7 +42,11 @@ export class VehicleController {
 
       return response.status(200).json(result);
     } catch (e) {
-      return response.status(400).json(e.message);
+      if (e instanceof Error) {
+        return response.status(400).json(e.message);
+      } else {
+        return response.status(500).json(e);
+      }
     }
   }
 
@@ -46,21 +54,29 @@ export class VehicleController {
     const { vehicleId } = request.params;
 
     try {
-      const result = await this.VehicleService.delete(vehicleId);
+      const result = await this.vehicleService.delete(vehicleId);
 
       return response.status(200).json(result);
     } catch (e) {
-      return response.status(400).json(e.message);
+      if (e instanceof Error) {
+        return response.status(400).json(e.message);
+      } else {
+        return response.status(500).json(e);
+      }
     }
   }
 
   async list(_: Request, response: Response) {
     try {
-      const result = await this.VehicleService.list();
+      const result = await this.vehicleService.list();
 
       return response.status(200).json(result);
     } catch (e) {
-      return response.status(400).json(e.message);
+      if (e instanceof Error) {
+        return response.status(400).json(e.message);
+      } else {
+        return response.status(500).json(e);
+      }
     }
   }
 
@@ -68,11 +84,15 @@ export class VehicleController {
     const { vehicleId } = request.params;
 
     try {
-      const result = await this.VehicleService.view(vehicleId);
+      const result = await this.vehicleService.view(vehicleId);
 
       return response.status(200).json(result);
     } catch (e) {
-      return response.status(400).json(e.message);
+      if (e instanceof Error) {
+        return response.status(400).json(e.message);
+      } else {
+        return response.status(500).json(e);
+      }
     }
   }
 }

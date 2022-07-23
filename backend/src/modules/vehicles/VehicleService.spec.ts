@@ -1,7 +1,7 @@
 import { v4 as uuidV4 } from "uuid";
-import { VehicleRepository } from "../repositories/VehicleRepository";
+import { VehicleRepository } from "../../repositories/VehicleRepository";
 import { VehicleService } from "./VehicleService";
-import { Vehicle } from "../entities/Vehicle";
+import { Vehicle } from "../../entities/Vehicle";
 
 jest.mock("../repositories/VehicleRepository");
 
