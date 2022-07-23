@@ -1,6 +1,6 @@
-import { Vehicle } from "../entities/Vehicle";
-import { IVehicle } from "../interfaces/vehicle";
-import { IVehicleRepository } from "../interfaces/VehicleRepository";
+import { Vehicle } from "../../entities/Vehicle";
+import { IVehicle } from "../../interfaces/vehicle";
+import { IVehicleRepository } from "../../interfaces/VehicleRepository";
 
 export class VehicleService {
   constructor(private vehicleRepository: IVehicleRepository) {}
