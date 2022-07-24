@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import "dotenv/config";
+import { Vehicle } from "../entities/Vehicle";
 
 const port = process.env.DATABASE_PORT as number | undefined
 
@@ -12,7 +13,7 @@ const AppDataSource = new DataSource({
   password: process.env.DATABASE_PASSWORD,
   database: process.env.DATABASE_NAME,
   logging: true,
-  entities: [`${__dirname}/../entities/*.{ts, js}`],
+  entities: [Vehicle],
   migrations: [`${__dirname}/**/migrations/*.{ts, js}`],
   migrationsTableName: "migrations",
 });

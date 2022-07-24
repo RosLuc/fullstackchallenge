@@ -56,7 +56,7 @@ export class VehicleController {
     try {
       await this.vehicleService.delete(vehicleId);
 
-      return response.status(200);
+      return response.status(200).json(true);
     } catch (e) {
       if (e instanceof Error) {
         return response.status(400).json(e.message);

@@ -4,8 +4,9 @@
   "description": "Este teste visa avaliar os conhecimentos e habilidades na nossa stack de tecnologias necessários para aplicação a oportunidade de desenvolvedor full stack aqui na [Sofit](https://sofit4.com.br).",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node dist/server.js",
     "dev": "ts-node-dev --transpile-only src/server.ts",
+    "build": "tsc --build",
     "typeorm": "typeorm-ts-node-commonjs",
     "migration:create": "typeorm-ts-node-commonjs migration:create",
     "migration:run": "typeorm-ts-node-commonjs -d ./src/database/index.ts migration:run",
