@@ -7,7 +7,7 @@ export class VehicleController {
 
   async create(request: Request, response: Response) {
     const { licensePlate, brand, model, version, year } = request.body;
-    
+
     try {
       const result = await this.vehicleService.create({
         licensePlate,
@@ -54,9 +54,9 @@ export class VehicleController {
     const { vehicleId } = request.params;
 
     try {
-      const result = await this.vehicleService.delete(vehicleId);
+      await this.vehicleService.delete(vehicleId);
 
-      return response.status(200).json(result);
+      return response.status(200);
     } catch (e) {
       if (e instanceof Error) {
         return response.status(400).json(e.message);
