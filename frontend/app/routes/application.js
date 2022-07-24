@@ -1,7 +1,10 @@
 import Route from '@ember/routing/route';
+import { inject as service } from '@ember/service';
 
 export default class ApplicationRoute extends Route {
-  model() {
-    return ['Marie Curie', 'Mae Jemison', 'Albert Hofmann'];
+  @service store;
+
+  async model() {
+    return await this.store.findAll('vehicle');
   }
 }

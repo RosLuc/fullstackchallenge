@@ -13,6 +13,7 @@ module.exports = function (environment) {
       },
     },
 
+    vehicleApi: process.env.VEHICLE_API,
     APP: {
       // Here you can pass flags/options to your application instance
       // when it is created

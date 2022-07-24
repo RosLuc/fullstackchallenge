@@ -9,22 +9,9 @@
     <div class='smooth-gradient'></div>
     <div class='list-container'>
       <div>
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
-        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        {{#each @model as |car|}}
+          <CarCard @model="{{car.model}}" @licensePlate="{{car.licensePlate}}" />
+        {{/each}}
       </div>
     </div>
 
