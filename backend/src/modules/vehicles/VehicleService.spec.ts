@@ -1,9 +1,9 @@
 import { v4 as uuidV4 } from "uuid";
-import { VehicleRepository } from "../../repositories/VehicleRepository";
 import { VehicleService } from "./VehicleService";
-import { Vehicle } from "../../entities/Vehicle";
+import { IVehicle } from "../../interfaces/vehicle";
+import { VehicleRepository } from "../../repositories/VehicleRepository";
 
-jest.mock("../repositories/VehicleRepository");
+jest.mock("../../repositories/VehicleRepository");
 
 const VehicleRepositoryMock = VehicleRepository as jest.Mock<VehicleRepository>;
 
@@ -69,9 +69,11 @@ describe("VehicleService", () => {
     });
 
     vehicleRepositoryMock.update.mockImplementationOnce(
-      async (_, value: Vehicle) => ({
-        ...value,
-        updatedAt: new Date(),
+      async (_: string, vehicle: IVehicle) => ({
+        ...vehicle,
+        id: vehicle.id ?? uuidV4(),
+        createdAt: vehicle.createdAt ?? new Date(),
+        updatedAt: vehicle.updatedAt ?? new Date(),
       })
     );
 
@@ -102,21 +104,23 @@ describe("VehicleService", () => {
       year: 73573,
     };
 
-    vehicleRepositoryMock.findOneById.mockResolvedValueOnce(null);
+    vehicleRepositoryMock.findOneById.mockImplementationOnce(async () => {
+      throw new Error("Vehicle does not exist.");
+    });
 
-    let error: { message: string };
+    let error = { message: "" };
     try {
       await vehicleService.update(uuidV4(), {
         ...vehicleMock,
         brand: "marcaTeste02",
       });
     } catch (e) {
-      error = e;
+      error = e as Error;
     }
 
     expect(vehicleRepositoryMock.findOneById).toHaveBeenCalledTimes(1);
     expect(vehicleRepositoryMock.update).toHaveBeenCalledTimes(0);
-    expect(error.message).toBe("Vehicle does not exist.");
+    expect(error?.message).toBe("Vehicle does not exist.");
   });
 
   it("delete - deletion successful", async () => {
@@ -149,13 +153,15 @@ describe("VehicleService", () => {
   it("delete - vehicle does not exist", async () => {
     const { vehicleService, vehicleRepositoryMock } = getSut();
 
-    vehicleRepositoryMock.findOneById.mockResolvedValueOnce(null);
+    vehicleRepositoryMock.findOneById.mockImplementationOnce(async () => {
+      throw new Error("Vehicle does not exist.");
+    });
 
-    let error: { message: string };
+    let error = { message: "" };
     try {
       await vehicleService.delete(uuidV4());
     } catch (e) {
-      error = e;
+      error = e as Error;
     }
 
     expect(vehicleRepositoryMock.findOneById).toHaveBeenCalledTimes(1);
@@ -240,13 +246,15 @@ describe("VehicleService", () => {
   it("view - vehicle does not exist", async () => {
     const { vehicleService, vehicleRepositoryMock } = getSut();
 
-    vehicleRepositoryMock.findOneById.mockResolvedValueOnce(null);
+    vehicleRepositoryMock.findOneById.mockImplementationOnce(async () => {
+      throw new Error("Vehicle does not exist.");
+    });
 
-    let error: { message: string };
+    let error = { message: "" };
     try {
       await vehicleService.view(uuidV4());
     } catch (e) {
-      error = e;
+      error = e as Error;
     }
 
     expect(vehicleRepositoryMock.findOneById).toHaveBeenCalledTimes(1);

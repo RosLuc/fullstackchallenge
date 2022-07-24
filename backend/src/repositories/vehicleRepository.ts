@@ -24,7 +24,7 @@ export class VehicleRepository implements IVehicleRepository {
       ...vehicle,
     });
 
-    return await this.repository.findOneBy({ id: vehicleId });
+    return (await this.repository.findOneBy({ id: vehicleId })) as Vehicle;
   }
 
   async delete(vehicleId: string): Promise<boolean> {
