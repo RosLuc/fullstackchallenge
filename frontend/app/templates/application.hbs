@@ -1,7 +1,35 @@
-{{page-title "Frontend"}}
+{{page-title 'Car List'}}
 
-{{!-- The following component displays Ember's default welcome message. --}}
-<WelcomePage />
-{{!-- Feel free to remove this! --}}
+<div class='container'>
+  <Card>
+
+    <h2 class='color-primary' style='margin: 1rem'>Car List</h2>
+
+    <div style='margin: 2rem 1rem 0rem 1rem'><SearchInput /></div>
+    <div class='smooth-gradient'></div>
+    <div class='list-container'>
+      <div>
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+        <CarCard @model='Acura' @licensePlate='IAN-7111' />
+      </div>
+    </div>
+
+    <div class='smooth-gradient'></div>
+  </Card>
+</div>
 
 {{outlet}}
