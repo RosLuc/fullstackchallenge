@@ -17,9 +17,4 @@ export default class EditRoute extends Route {
       this.router.transitionTo('index');
     });
   }
-
-  // @action
-  // cancel() {
-  //   this.transitionTo('index');
-  // }
 }
