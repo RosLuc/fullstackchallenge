@@ -1,8 +1,14 @@
-<div class="car-card">
-  <div>
-    <h3 class='color-text'>{{@model}}</h3>
-    <span class='color-light-text'>{{@licensePlate}}</span>
+<LinkTo @route='edit' @model={{@vehicleId}}>
+  <div class='car-card'>
+    <div>
+      <h3 class='color-text'>{{@brand}} - {{@model}}</h3>
+      <span class='color-light-text'>Placa: {{@licensePlate}}</span>
+    </div>
+
+    <img
+      src='assets/icons/trash.svg'
+      alt='trash'
+      {{on 'click' (fn this.deleteVehicle @vehicleId)}}
+    />
   </div>
-  
-   <img src="assets/icons/trash.svg" alt="trash" />
-</div>
+</LinkTo>

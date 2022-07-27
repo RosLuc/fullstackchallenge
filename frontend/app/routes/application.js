@@ -5,6 +5,6 @@ export default class ApplicationRoute extends Route {
   @service store;
 
   async model() {
-    return await this.store.findAll('vehicle');
+    return this.store.findAll('vehicle');
   }
 }

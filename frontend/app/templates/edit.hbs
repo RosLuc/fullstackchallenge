@@ -1,0 +1,111 @@
+{{page-title 'Car List'}}
+
+<div class='container'>
+  <Card>
+
+    <h2 class='color-primary' style='margin: 1rem'>Car List</h2>
+
+    <div style='margin: 2rem 1rem 0rem 1rem'>
+      <form class='car-form'>
+        <div class='grid-container'>
+          <div
+            class='flex flex-column flex-row-xs'
+            style='justify-content: space-between'
+          >
+
+            <div class='flex flex-column mt-2' style='width: 100%'>
+              <label>Marca</label>
+              <div class='input'>
+                <input
+                  placeholder='Placa do carro'
+                  name='licensePlate'
+                  placeholder='Marca do carro'
+                  value='{{@model.brand}}'
+                  required=true
+                />
+              </div>
+            </div>
+
+            <div class='flex flex-column ml-1-xs mt-2' style='width: 100%'>
+              <label>Modelo</label>
+              <div class='input'>
+                {{input
+                  placeholder='Placa do carro'
+                  name='licensePlate'
+                  placeholder='Marca do carro'
+                  value=@model.model
+                }}
+              </div>
+            </div>
+          </div>
+          <div
+            class='flex flex-column flex-row-xs'
+            style='justify-content: space-between'
+          >
+
+            <div class='flex flex-column mt-2' style='width: 100%'>
+              <label>Placa</label>
+              <div class='input'>
+                <input
+                  placeholder='Placa do carro'
+                  name='licensePlate'
+                  placeholder='Marca do carro'
+                  value='{{@model.licensePlate}}'
+                  required
+                />
+              </div>
+            </div>
+
+            <div class='flex flex-column ml-1-xs mt-2' style='width: 100%'>
+              <label>Versão</label>
+              <div class='input'>
+                <input
+                  placeholder='Versão do carro'
+                  name='version'
+                  placeholder='Marca do carro'
+                  value='{{@model.version}}'
+                  required
+                />
+              </div>
+            </div>
+
+          </div>
+          <div
+            class='flex flex-column flex-row-xs'
+            style='justify-content: space-between'
+          >
+            <div class='flex flex-column mt-2' style='width: 100%'>
+              <label>Ano</label>
+              <div class='input'>
+                <input
+                  placeholder='Ano do carro'
+                  type='number'
+                  name='year'
+                  placeholder='Marca do carro'
+                  value='{{@model.year}}'
+                  required
+                />
+              </div>
+            </div>
+          </div>
+          <div
+            class='flex flex-column flex-row-xs'
+            style='justify-content: space-between'
+          >
+            <div class='mt-2'>
+              <LinkTo @route='index'>
+                <button class='error-color' type='submit'>Voltar</button>
+              </LinkTo>
+            </div>
+            <div class='ml-1-xs mt-2'>
+              <button class='primary-color' {{action 'save'}}>Atualizar</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </Card>
+</div>
+
+{{outlet}}

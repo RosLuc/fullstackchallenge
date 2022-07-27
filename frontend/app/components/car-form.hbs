@@ -1,4 +1,5 @@
-<form class='car-form' {{on 'submit' (fn this.submitForm)}}>
+<form class='car-form' {{on 'submit' this.submitForm}}>
+
   <div class='grid-container'>
     <div
       class='flex flex-column flex-row-xs'
@@ -11,13 +12,15 @@
           <select
             name='brand'
             placeholder='Marca do carro'
-            value='{{this.carInfo.brand}}'
-            {{on 'change' (fn this.changeProps)}}
+            value='{{this.brand}}'
+            {{on 'change' this.changeProps}}
             required
           >
             <option value='' disabled selected>Selecionar</option>
             {{#each this.brands as |brand|}}
-              <option value='{{brand.codigo}}'>{{brand.nome}}</option>
+              <option
+                value='{{brand.codigo}}-{{brand.nome}}'
+              >{{brand.nome}}</option>
             {{/each}}
           </select>
         </div>
@@ -31,12 +34,12 @@
             name='model'
             placeholder='Marca do carro'
             value='{{this.carInfo.model}}'
-            {{on 'change' (fn this.changeProps)}}
+            {{on 'change' this.changeProps}}
             required
           >
             <option value='' disabled selected>Selecionar</option>
             {{#each this.models as |model|}}
-              <option value='{{model.codigo}}'>{{model.nome}}</option>
+              <option value='{{model.nome}}'>{{model.nome}}</option>
             {{/each}}
           </select>
         </div>
@@ -55,7 +58,7 @@
             name='licensePlate'
             placeholder='Marca do carro'
             value='{{this.carInfo.licensePlate}}'
-            {{on 'change' (fn this.changeProps)}}
+            {{on 'change' this.changeProps}}
             required
           />
         </div>
@@ -69,7 +72,7 @@
             name='version'
             placeholder='Marca do carro'
             value='{{this.carInfo.version}}'
-            {{on 'change' (fn this.changeProps)}}
+            {{on 'change' this.changeProps}}
             required
           />
         </div>
@@ -89,7 +92,7 @@
             name='year'
             placeholder='Marca do carro'
             value='{{this.carInfo.year}}'
-            {{on 'change' (fn this.changeProps)}}
+            {{on 'change' this.changeProps}}
             required
           />
         </div>

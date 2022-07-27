@@ -5,7 +5,6 @@ import { service } from '@ember/service';
 import { inject } from '@ember/service';
 
 export default class CarFormComponent extends Component {
-  @service carApi;
   @service router;
   @inject store;
 
@@ -17,6 +16,7 @@ export default class CarFormComponent extends Component {
     year: 2022,
   };
   @tracked brands;
+  @tracked brandCode = '';
   @tracked models;
 
   constructor() {
@@ -30,15 +30,25 @@ export default class CarFormComponent extends Component {
 
   @action
   changeProps(event) {
-    this.carInfo = { ...this.carInfo, [event.target.name]: event.target.value };
     if (event.target.name === 'brand') {
+      const brandArray = event.target.value.split('-');
+      console.log(brandArray[1]);
+      this.carInfo = {
+        ...this.carInfo,
+        [event.target.name]: event.target.value,
+      };
+      this.brandCode = brandArray[0];
       fetch(
-        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${this.carInfo.brand}/modelos`
+        `https://parallelum.com.br/fipe/api/v1/carros/marcas/${this.brandCode}/modelos`
       ).then(async (response) => {
         const body = await response.json();
-        console.log(body);
         this.models = body.modelos;
       });
+    } else {
+      this.carInfo = {
+        ...this.carInfo,
+        [event.target.name]: event.target.value,
+      };
     }
   }
 
@@ -47,7 +57,7 @@ export default class CarFormComponent extends Component {
     event.preventDefault();
     try {
       const newVehicle = await this.store.createRecord('vehicle', {
-        brand: this.carInfo.brand,
+        brand: this.carInfo.brand.split('-')[1],
         licensePlate: this.carInfo.licensePlate,
         model: this.carInfo.model,
         version: this.carInfo.version,
