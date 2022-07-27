@@ -3,6 +3,8 @@
 @import './car-card';
 @import './colors';
 @import './search-input';
+@import './flex';
+@import './car-form';
 
 * {
   margin: 0;
@@ -13,6 +15,30 @@
 
 body {
   background-color: $primary-color;
+}
+
+button {
+  border: none;
+  width: 100%;
+  padding: 1rem 5rem 1rem 5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+
+  &.primary-color {
+    background-color: $primary-color;
+    color: #ffffff;
+    &:hover {
+      background-color: $primary-dark-color;
+    }
+  }
+
+  &.error-color {
+    background-color: $error-color;
+    color: #ffffff;
+    &:hover {
+      background-color: $error-dark-color;
+    }
+  }
 }
 
 .color-primary {

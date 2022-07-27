@@ -1,0 +1,112 @@
+<form class='car-form' {{on 'submit' (fn this.submitForm)}}>
+  <div class='grid-container'>
+    <div
+      class='flex flex-column flex-row-xs'
+      style='justify-content: space-between'
+    >
+
+      <div class='flex flex-column mt-2' style='width: 100%'>
+        <label>Marca</label>
+        <div class='input'>
+          <select
+            name='brand'
+            placeholder='Marca do carro'
+            value='{{this.carInfo.brand}}'
+            {{on 'change' (fn this.changeProps)}}
+            required
+          >
+            <option value='' disabled selected>Selecionar</option>
+            {{#each this.brands as |brand|}}
+              <option value='{{brand.codigo}}'>{{brand.nome}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+
+      <div class='flex flex-column ml-1-xs mt-2' style='width: 100%'>
+        <label>Modelo</label>
+        <div class='input'>
+          <select
+            placeholder='Modelo do carro'
+            name='model'
+            placeholder='Marca do carro'
+            value='{{this.carInfo.model}}'
+            {{on 'change' (fn this.changeProps)}}
+            required
+          >
+            <option value='' disabled selected>Selecionar</option>
+            {{#each this.models as |model|}}
+              <option value='{{model.codigo}}'>{{model.nome}}</option>
+            {{/each}}
+          </select>
+        </div>
+      </div>
+    </div>
+    <div
+      class='flex flex-column flex-row-xs'
+      style='justify-content: space-between'
+    >
+
+      <div class='flex flex-column mt-2' style='width: 100%'>
+        <label>Placa</label>
+        <div class='input'>
+          <input
+            placeholder='Placa do carro'
+            name='licensePlate'
+            placeholder='Marca do carro'
+            value='{{this.carInfo.licensePlate}}'
+            {{on 'change' (fn this.changeProps)}}
+            required
+          />
+        </div>
+      </div>
+
+      <div class='flex flex-column ml-1-xs mt-2' style='width: 100%'>
+        <label>Versão</label>
+        <div class='input'>
+          <input
+            placeholder='Versão do carro'
+            name='version'
+            placeholder='Marca do carro'
+            value='{{this.carInfo.version}}'
+            {{on 'change' (fn this.changeProps)}}
+            required
+          />
+        </div>
+      </div>
+
+    </div>
+    <div
+      class='flex flex-column flex-row-xs'
+      style='justify-content: space-between'
+    >
+      <div class='flex flex-column mt-2' style='width: 100%'>
+        <label>Ano</label>
+        <div class='input'>
+          <input
+            placeholder='Ano do carro'
+            type='number'
+            name='year'
+            placeholder='Marca do carro'
+            value='{{this.carInfo.year}}'
+            {{on 'change' (fn this.changeProps)}}
+            required
+          />
+        </div>
+      </div>
+    </div>
+    <div
+      class='flex flex-column flex-row-xs'
+      style='justify-content: space-between'
+    >
+      <div class='mt-2'>
+        <LinkTo @route='index'>
+          <button class='error-color' type='submit'>Voltar</button>
+        </LinkTo>
+      </div>
+      <div class='ml-1-xs mt-2'>
+        <button class='primary-color' type='submit'>Cadastrar</button>
+      </div>
+    </div>
+  </div>
+</form>

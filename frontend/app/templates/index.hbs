@@ -1,0 +1,29 @@
+{{page-title 'Car List'}}
+
+<div class='container'>
+  <Card>
+
+    <h2 class='color-primary' style='margin: 1rem'>Car List</h2>
+
+    <div style='margin: 2rem 1rem 1rem 1rem'>
+      <LinkTo @route="register">
+        <button class='primary-color'>Adicionar carro</button>
+      </LinkTo>
+    </div>
+    <div class='smooth-gradient'></div>
+    <div class='list-container'>
+      <div>
+        {{#each @model as |car|}}
+          <CarCard
+            @model='{{car.model}}'
+            @licensePlate='{{car.licensePlate}}'
+          />
+        {{/each}}
+      </div>
+    </div>
+
+    <div class='smooth-gradient'></div>
+  </Card>
+</div>
+
+{{outlet}}
