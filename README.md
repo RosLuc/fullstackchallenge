@@ -42,3 +42,14 @@ Após realizar o desafio, enviar ao Github e nos enviar o link no e-mail dev.job
 
 ## Bonus
 - Criação de testes automatizados (Backend).
+
+---
+# Configuração
+
+    1. Clone o repositorio (git clone https://github.com/RosLuc/fullstackchallenge.git)
+    2. Duplique o arquivo `.env.example` presente em cada diretório (backend, frontend) e altere seu nome para `.env` e preencha de acordo com suas configurações.
+    3. Inicie o sistema beckend acessando o diretório `backend/` e executando: `docker-compose up`.
+    4. Ainda no diretório `backend/` execute as migrations do sistema: `docker exec fullstackchallenge-container npm run migration:run`.
+    5. Inicie o sistema frontend acessando o diretório `frontend/` e executando: `npm install && npm run start`
+    5. Desfrute!
+
